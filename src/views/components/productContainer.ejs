@@ -1,0 +1,28 @@
+<div class="product-container">
+    <div class="product-left">
+        <div class="thumbs">
+            <% product.images.forEach((img, i) => { %>
+                <img src="<%= img %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
+            <% }) %>
+        </div>
+
+        <div class="main-image">
+            <img src="<%= product.images[0] %>" alt="producto" />
+        </div>
+    </div>
+
+    <div class="product-right">
+        <h2 class="title"><%= product.name %></h2>
+
+        <div class="price">
+            <span class="amount"><%= product.price %></span>
+            <span class="points">PUNTOS</span>
+        </div>
+
+        <button class="btn-add">Agregar al carrito</button>
+
+        <div class="description">
+            <p><%- product.description.replace(/\n/g, "<br>") %></p>
+        </div>
+    </div>
+</div>

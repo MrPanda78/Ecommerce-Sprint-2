@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - Ecommerce</title>
+
+    <link rel="stylesheet" href="/css/components/userDropdown.css">
+    <link rel="stylesheet" href="/css/layouts/header.css">
+    <link rel="stylesheet" href="/css/components/searchBar.css">
+    <link rel="stylesheet" href="/css/components/cartAndProfile.css">
+    <link rel="stylesheet" href="/css/views/product.css">
+    <link rel="stylesheet" href="/css/components/breadCrumb.css">
+    <link rel="stylesheet" href="/css/components/productContainer.css">
+    <link rel="stylesheet" href="/css/components/productCard.css">
+    <link rel="stylesheet" href="/css/layouts/nav.css">
+    <link rel="stylesheet" href="/css/layouts/footer.css">
+</head>
+<body>
+    <%- include('components/userDropdown') %>
+    <%- include('layouts/header', { loggedIn: loggedIn }) %>
+    <main>
+        <div class="container1">
+            <%- include('components/breadCrumb', { page: 'product' }) %>
+            <%- include('components/productContainer') %>
+        </div>
+        <div class="container1-mobile">
+            <%- include('components/breadCrumb', { page: 'product' }) %>
+            <div class="product-container-mobile">
+                <h2 class="title"><%= product.name %></h2>
+                <div class="main-image-mobile">
+                    <img src="<%= product.images[0] %>" alt="Product" />
+                </div>
+                <div class="thumbs-mobile">
+                    <% product.images.forEach((img, i) => { %>
+                        <img src="<%= img %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
+                    <% }) %>
+                </div>
+                <div class="price">
+                    <span class="amount"><%= product.price %></span>
+                    <span class="points">PUNTOS</span>
+                </div>
+                <div class="description">
+                    <p><%- product.description.replace(/\n/g, "<br>") %></p>
+                </div>
+                <button class="btn-add">Agregar al carrito</button>
+            </div>
+        </div>
+        <div class="container2">
+            <h2 class="interests-title">También te puede interesar</h2>
+            <div class="interests">
+                <% interests.forEach(product => { %>
+                    <%- include('components/productCard', { 
+                        name: product.name,
+                        image: product.image,
+                        points: product.points
+                    }) %>
+                <% }) %>
+            </div>
+        </div>
+        <div class="container3">
+            <%- include('layouts/nav') %>
+        </div>
+    </main>
+    <%- include('layouts/footer') %>
+
+    <script src="/js/product.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Ecommerce</title>
+
+    <link rel="stylesheet" href="/css/components/userDropdown.css">
+    <link rel="stylesheet" href="/css/layouts/header.css">
+    <link rel="stylesheet" href="/css/components/searchBar.css">
+    <link rel="stylesheet" href="/css/components/cartAndProfile.css">
+    <link rel="stylesheet" href="/css/layouts/nav.css">
+    <link rel="stylesheet" href="/css/views/index.css">
+    <link rel="stylesheet" href="/css/components/productCard.css">
+    <link rel="stylesheet" href="/css/layouts/footer.css">
+</head>
+<body>
+    <%- include('components/userDropdown') %>
+    <%- include('layouts/header', { loggedIn: loggedIn }) %>
+    <main>
+        <div class="container1">
+            <%- include('layouts/nav') %>
+        </div>
+        <div class="container2">
+            <div class="benefit-container">
+                <img class="benefit1" src="/images/image1.webp" alt="Benefit 1">
+            </div>
+            <div class="benefit-container">
+                <img class="benefit2" src="/images/image2.webp" alt="Benefit 2">
+            </div>
+        </div>
+        <div class="container3">
+            <h2 class="">Te puede interesar</h2>
+            <div class="interests">
+                <% interests.forEach(product => { %>
+                    <%- include('components/productCard', { 
+                        name: product.name,
+                        image: product.image,
+                        points: product.points
+                    }) %>
+                <% }) %>
+            </div>
+            <h2 class="interests-title">Los más pedidos</h2>
+            <div class="interests">
+                <% mostRequested.forEach(product => { %>
+                    <%- include('components/productCard', { 
+                        name: product.name,
+                        image: product.image,
+                        points: product.points
+                    }) %>
+                <% }) %>
+            </div>
+        </div>
+        <div class="container1">
+            <%- include('layouts/nav') %>
+        </div>
+    </main>
+    <%- include('layouts/footer') %>
+
+    <script src="/js/index.js"></script>
+</body>
+</html>

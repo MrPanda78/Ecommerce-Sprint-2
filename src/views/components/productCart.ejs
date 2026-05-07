@@ -1,0 +1,17 @@
+<div class="product-cart">
+    <div class="product-cart-image-and-info">
+        <img src="<%= image %>" alt="<%= name %>">
+        <p class="product-name"><%= name %></p>
+    </div>
+    <div class="product-cart-actions">
+        <div class="product-remove-and-change">
+            <button class="product-remove-button">Quitar</button>
+            <div class="quantity-selector">
+                <button class="qty-btn minus">-</button>
+                <input class="qty-input" name="qty-product" type="number" value="1" data-points="<%= String(points).replace(/\./g, '') %>">
+                <button class="qty-btn plus">+</button>
+            </div>
+        </div>
+        <span class="price"><%= points %></span>
+    </div>
+</div>

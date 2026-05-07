@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Ecommerce</title>
+
+    <link rel="stylesheet" href="/css/components/userDropdown.css">
+    <link rel="stylesheet" href="/css/layouts/header.css">
+    <link rel="stylesheet" href="/css/components/searchBar.css">
+    <link rel="stylesheet" href="/css/components/cartAndProfile.css">
+    <link rel="stylesheet" href="/css/views/cart.css">
+    <link rel="stylesheet" href="/css/components/breadCrumb.css">
+    <link rel="stylesheet" href="/css/components/productCart.css">
+    <link rel="stylesheet" href="/css/layouts/footer.css">
+</head>
+<body>
+    <% let totalPoints = 0; %>
+
+    <%- include('components/userDropdown') %>
+    <%- include('layouts/header', { loggedIn: loggedIn }) %>
+    <main>
+        <div class="container">
+            <%- include('components/breadCrumb', { page: 'cart' }) %>
+            <h1>Productos en tu Carrito</h1>
+            <div class="product">
+                <% productsCart.forEach(product => { %>
+                    <%- include('components/productCart', { 
+                        name: product.name,
+                        image: product.image,
+                        points: product.points
+                    }) %>
+                    <% 
+                    // Convertimos a texto, quitamos TODOS los puntos (separadores de miles) y luego convertimos a número
+                    let puntosLimpios = String(product.points).replace(/\./g, '');
+                    totalPoints += Number(puntosLimpios) || 0; 
+                    %>
+                <% }) %>
+
+            </div>
+            <div class="checkout">
+                <!-- Mostramos el total formateado correctamente (ej: 19.900) -->
+                <h1>Total de puntos: <%= new Intl.NumberFormat('es-CL').format(totalPoints) %></h1>
+                
+                <a href="/checkout" class="button-pay">Ir a Pagar</a>
+            </div>
+        </div>
+    </main>
+    <%- include('layouts/footer') %>
+
+    <script src="/js/cart.js"></script>
+</body>
+</html>
