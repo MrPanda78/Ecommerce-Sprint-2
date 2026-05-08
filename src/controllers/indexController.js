@@ -19,6 +19,10 @@ const mostRequested = [
 const indexController = {
     index: (req, res) => {
         res.render('index', { loggedIn: 1, interests, mostRequested });
+    },
+
+    error404: (req, res) => {
+        res.status(404).render("error404");
     }
 };
 
