@@ -6,6 +6,7 @@ const cartRoutes = require('./src/routes/cartRoute');
 const loginRoutes = require('./src/routes/loginRoute');
 const productRoutes = require('./src/routes/productRoute');
 const registerRoutes = require('./src/routes/registerRoute');
+const indexController = require('./src/controllers/indexController');
 
 const app = express();
 
@@ -19,6 +20,8 @@ app.use('/cart', cartRoutes);
 app.use('/login', loginRoutes);
 app.use('/product', productRoutes);
 app.use('/register', registerRoutes);
+
+app.use(indexController.error404);
 
 app.listen(3000, () => {
     console.log('Servidor corriendo en http://localhost:3000');
