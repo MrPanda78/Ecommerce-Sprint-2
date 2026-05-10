@@ -14,14 +14,20 @@
     <main>
         <div>
             <h2>¡Registrate!</h2>
-            <input type="text" name="email" placeholder="Tu email" autocomplete="email">
-            <input type="text" name="password" placeholder="Tu nueva contraseña">
-            <input type="text" name="password-repeat" placeholder="Repite tu contraseña">
+            <form id="registerForm" action="/register" method="POST">
 
-            <a href="/">Crear Cuenta</a>
+                <input id="email" type="text" name="email" placeholder="Tu email" autocomplete="email">
+                <input id="password" type="text" name="password" placeholder="Tu nueva contraseña">
+                <input id="password-repeat" type="text" name="password-repeat" placeholder="Repite tu contraseña">
+
+                <button class="button-submit" type="submit">Crear Cuenta</button>
+
+            </form>
+            <h5>¿Ya tienes cuenta? <a href="/login">Iniciar Sesión</a></h5>
         </div>
-        <h5>¿Ya tienes cuenta? <a href="/login">Iniciar Sesión</a></h5>
     </main>
     <%- include('layouts/footer') %>
+    
+    <script src="/js/register.js"></script>
 </body>
 </html>

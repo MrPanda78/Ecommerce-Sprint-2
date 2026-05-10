@@ -48,13 +48,16 @@ main input {
     padding: 0.5rem 1rem;
     outline: none;
     font-size: 0.75rem;
+    width: 100%;
 }
 
 main h5 {
     font-size: 0.70rem;
+    margin-bottom: 0;
+    text-align: center;
 }
 
-main a {
+.button-submit {
     background-color: #494f51;
     color: #ffffff;
     border: none;
@@ -66,13 +69,14 @@ main a {
     transition: background-color 0.3s ease 0.1s;
     text-decoration: none;
     text-align: center;
+    width: 100%;
 }
 
-main a:hover {
+.button-submit:hover {
     background-color: #0cb093;
 }
 
-main a:first-child {
+main a {
     color: #000000;
     text-decoration: underline;
     background-color: transparent;
