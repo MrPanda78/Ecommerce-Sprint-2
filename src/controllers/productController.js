@@ -1,7 +1,7 @@
 const products = require("../data/products.json");
 
 const interests = [
-    { name: 'Whiskey Blenders Pride 750ml', image: '/images/whisky.webp', points: '19.900' },
+    { name: 'Whiskey Blenders Pride 750ml', image: '/images/products/beverages/coca_cola_lata_220ml_pack_original_x8.webp', points: '19.900' },
     { name: 'Nombre del producto o servicio', image: '/images/fondo_blanco_negro.webp', points: 'XX.XXX' },
     { name: 'Nombre del producto o servicio', image: '/images/fondo_blanco_negro.webp', points: 'XX.XXX' },
     { name: 'Nombre del producto o servicio', image: '/images/fondo_blanco_negro.webp', points: 'XX.XXX' }

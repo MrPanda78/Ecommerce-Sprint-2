@@ -2,12 +2,12 @@
     <div class="product-left">
         <div class="thumbs">
             <% for(let i = 0; i < 3; i++) { %>
-                <img src="<%= "/images/" + product.image %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
+                <img src="<%= "/images/products/" + product.category + "/" + product.image %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
             <% } %>
         </div>
 
         <div class="main-image">
-            <img src="<%= "/images/" + product.image %>" alt="producto" />
+            <img src="<%= "/images/products/" + product.category + "/" + product.image %>" alt="producto" />
         </div>
     </div>
 
@@ -15,7 +15,7 @@
         <h2 class="title"><%= product.name %></h2>
 
         <div class="price">
-            <span class="amount"><%= new Intl.NumberFormat('es-CL').format(product.price) %></span>
+            <span class="amount"><%= new Intl.NumberFormat('es-CL').format(product.points) %></span>
             <span class="points">PUNTOS</span>
         </div>
 

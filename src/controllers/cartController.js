@@ -12,7 +12,7 @@ const cartController = {
             return {
                 ...realProduct,
                 quantity: cartItem.quantity,
-                subtotal: realProduct.price * cartItem.quantity
+                subtotal: realProduct.points * cartItem.quantity
             };
         });
 

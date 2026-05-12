@@ -29,15 +29,15 @@
             <form class="product-container-mobile" action="/cart/add/<%= product.id %>" method="POST">
                 <h2 class="title"><%= product.name %></h2>
                 <div class="main-image-mobile">
-                    <img src="<%= "/images/" + product.image %>" alt="Product" />
+                    <img src="<%= "/images/products/" + product.category + "/" + product.image %>" alt="Product" />
                 </div>
                 <div class="thumbs-mobile">
                     <% for(let i = 0; i < 3; i++) { %>
-                        <img src="<%= "/images/" + product.image %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
+                        <img src="<%= "/images/products/" + product.category + "/" + product.image %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
                     <% } %>
                 </div>
                 <div class="price">
-                    <span class="amount"><%= product.price %></span>
+                    <span class="amount"><%= new Intl.NumberFormat('es-CL').format(product.points) %></span>
                     <span class="points">PUNTOS</span>
                 </div>
                 <div class="description">
@@ -51,9 +51,11 @@
             <div class="interests">
                 <% interests.forEach(product => { %>
                     <%- include('components/productCard', { 
+                        id: product.id,
                         name: product.name,
                         image: product.image,
-                        points: product.points
+                        points: product.points,
+                        category: product.category
                     }) %>
                 <% }) %>
             </div>

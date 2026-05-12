@@ -1,9 +1,52 @@
 [
-    {
-        "id": 1,
-        "name": "Whiskey Jack Daniels Honey 750ml",
-        "price": 19900,
-        "image": "whisky.webp",
-        "description": "Un verdaderamente fabuloso licor de whisky Blenders Pride. Está hecho con una mezcla de ricas especias y suave, miel tersa y el resultado es delicioso sobre hielo o café.\n\nAroma de caramelo y roble carbonizado, un poco de flor naranja, miel de manuka y vainilla.\n\nBoca: grueso y cremoso, con notas de vainilla, roble tostado, miel de nuevo, un poco de albaricoque también.\n\nAcabado: De buena longitud - redondeado y rico.\n\nNo incluye vasos, la foto es sólo ilustrativa."
-    }
+  {
+    "id": 1,
+    "name": "Whiskey Blenders Pride 750ml",
+    "description": "Un verdaderamente fabuloso licor de whisky Blenders Pride. Está hecho con una mezcla de ricas especias y suave, miel tersa y el resultado es delicioso sobre hielo o café.\n\nAroma de caramelo y roble carbonizado, un poco de flor naranja, miel de manuka y vainilla.\n\nBoca: grueso y cremoso, con notas de vainilla, roble tostado, miel de nuevo, un poco de albaricoque también.\n\nAcabado: De buena longitud - redondeado y rico.\n\nNo incluye vasos, la foto es sólo ilustrativa.",
+    "points": 19900,
+    "category": "beverages",
+    "image": "whiskey_blenders_pride_750ml.webp"
+  },
+  {
+    "id": 2,
+    "name": "Coca Cola Lata 220ml - Pack original x8",
+    "points": 760,
+    "category": "beverages",
+    "image": "coca_cola_lata_220ml_pack_original_x8.webp"
+  },
+  {
+    "id": 3,
+    "name": "Pepsi Black 2L",
+    "points": 4200,
+    "category": "beverages",
+    "image": "pepsi_black_2l.webp"
+  },
+  {
+    "id": 4,
+    "name": "Sprite Lima Limón 1.5L",
+    "points": 3900,
+    "category": "beverages",
+    "image": "sprite_lima_limon_1_5l.webp"
+  },
+  {
+    "id": 5,
+    "name": "Monster Energy Original 473ml",
+    "points": 5200,
+    "category": "beverages",
+    "image": "monster_energy_original_473ml.webp"
+  },
+  {
+    "id": 6,
+    "name": "Fanta Naranja 2.25L",
+    "points": 4300,
+    "category": "beverages",
+    "image": "fanta_naranja_2_25l.webp"
+  },
+  {
+    "id": 7,
+    "name": "Agua Villavicencio Sin Gas 1.5L",
+    "points": 2500,
+    "category": "beverages",
+    "image": "agua_villavicencio_sin_gas_1_5l.webp"
+  }
 ]
