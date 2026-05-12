@@ -47,18 +47,22 @@
             </form>
         </div>
         <div class="container2">
-            <h2 class="interests-title">También te puede interesar</h2>
-            <div class="interests">
-                <% interests.forEach(product => { %>
-                    <%- include('components/productCard', { 
-                        id: product.id,
-                        name: product.name,
-                        image: product.image,
-                        points: product.points,
-                        category: product.category
-                    }) %>
-                <% }) %>
-            </div>
+            <% if (interests.length !== 0) { %>
+                <h2 class="interests-title">También te puede interesar</h2>
+                <div class="interests">
+                    <% interests.forEach(product => { %>
+                        <%- include('components/productCard', { 
+                            id: product.id,
+                            name: product.name,
+                            image: product.image,
+                            points: product.points,
+                            category: product.category
+                        }) %>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <h2 class="interests-title">Lo sentimos... no hay productos relacionados para mostrar.</h2>
+            <% } %>
         </div>
         <div class="container3">
             <%- include('layouts/nav') %>
