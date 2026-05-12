@@ -1,13 +1,13 @@
-<div class="product-container">
+<form class="product-container" action="/cart/add/<%= product.id %>" method="POST">
     <div class="product-left">
         <div class="thumbs">
-            <% product.images.forEach((img, i) => { %>
-                <img src="<%= img %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
-            <% }) %>
+            <% for(let i = 0; i < 3; i++) { %>
+                <img src="<%= "/images/products/" + product.category + "/" + product.image %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
+            <% } %>
         </div>
 
         <div class="main-image">
-            <img src="<%= product.images[0] %>" alt="producto" />
+            <img src="<%= "/images/products/" + product.category + "/" + product.image %>" alt="producto" />
         </div>
     </div>
 
@@ -15,14 +15,14 @@
         <h2 class="title"><%= product.name %></h2>
 
         <div class="price">
-            <span class="amount"><%= product.price %></span>
+            <span class="amount"><%= new Intl.NumberFormat('es-CL').format(product.points) %></span>
             <span class="points">PUNTOS</span>
         </div>
 
-        <button class="btn-add">Agregar al carrito</button>
+        <button type="submit" class="btn-add">Agregar al carrito</button>
 
         <div class="description">
             <p><%- product.description.replace(/\n/g, "<br>") %></p>
         </div>
     </div>
-</div>
+</form>
