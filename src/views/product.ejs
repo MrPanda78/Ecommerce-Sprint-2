@@ -22,19 +22,19 @@
     <main>
         <div class="container1">
             <%- include('components/breadCrumb', { page: 'product' }) %>
-            <%- include('components/productContainer') %>
+            <%- include('components/productContainer', { product }) %>
         </div>
         <div class="container1-mobile">
             <%- include('components/breadCrumb', { page: 'product' }) %>
-            <div class="product-container-mobile">
+            <form class="product-container-mobile" action="/cart/add/<%= product.id %>" method="POST">
                 <h2 class="title"><%= product.name %></h2>
                 <div class="main-image-mobile">
-                    <img src="<%= product.images[0] %>" alt="Product" />
+                    <img src="<%= "/images/" + product.image %>" alt="Product" />
                 </div>
                 <div class="thumbs-mobile">
-                    <% product.images.forEach((img, i) => { %>
-                        <img src="<%= img %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
-                    <% }) %>
+                    <% for(let i = 0; i < 3; i++) { %>
+                        <img src="<%= "/images/" + product.image %>" class="thumb <%= i === 0 ? 'active' : '' %>" />
+                    <% } %>
                 </div>
                 <div class="price">
                     <span class="amount"><%= product.price %></span>
@@ -43,8 +43,8 @@
                 <div class="description">
                     <p><%- product.description.replace(/\n/g, "<br>") %></p>
                 </div>
-                <button class="btn-add">Agregar al carrito</button>
-            </div>
+                <button type="submit" class="btn-add">Agregar al carrito</button>
+            </form>
         </div>
         <div class="container2">
             <h2 class="interests-title">También te puede interesar</h2>
