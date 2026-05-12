@@ -22,30 +22,34 @@
     <main>
         <div class="container">
             <%- include('components/breadCrumb', { page: 'cart' }) %>
-            <h1>Productos en tu Carrito</h1>
-            <div class="product">
-                <% cartProducts.forEach(product => { %>
-                    <%- include('components/productCart', { 
-                        id: product.id,
-                        name: product.name,
-                        image: product.image,
-                        points: product.price,
-                        quantity: product.quantity
-                    }) %>
-                    <% 
-                    // Convertimos a texto, quitamos TODOS los puntos (separadores de miles) y luego convertimos a número
-                    let puntosLimpios = String(product.subtotal).replace(/\./g, '');
-                    totalPoints += Number(puntosLimpios) || 0; 
-                    %>
-                <% }) %>
+            <% if (cartProducts.length !== 0) { %>
+                <h1>Productos en tu Carrito</h1>
+                <div class="product">
+                    <% cartProducts.forEach(product => { %>
+                        <%- include('components/productCart', { 
+                            id: product.id,
+                            name: product.name,
+                            image: product.image,
+                            points: product.price,
+                            quantity: product.quantity
+                        }) %>
+                        <% 
+                        // Convertimos a texto, quitamos TODOS los puntos (separadores de miles) y luego convertimos a número
+                        let puntosLimpios = String(product.subtotal).replace(/\./g, '');
+                        totalPoints += Number(puntosLimpios) || 0; 
+                        %>
+                    <% }) %>
 
-            </div>
-            <div class="checkout">
-                <!-- Mostramos el total formateado correctamente (ej: 19.900) -->
-                <h1>Total de puntos: <%= new Intl.NumberFormat('es-CL').format(totalPoints) %></h1>
-                
-                <a href="/checkout" class="button-pay">Ir a Pagar</a>
-            </div>
+                </div>
+                <div class="checkout">
+                    <!-- Mostramos el total formateado correctamente (ej: 19.900) -->
+                    <h1>Total de puntos: <%= new Intl.NumberFormat('es-CL').format(totalPoints) %></h1>
+                    
+                    <a href="/checkout" class="button-pay">Ir a Pagar</a>
+                </div>
+            <% } else { %>
+                <h1 class="empty-cart-title">Tu carrito está vacío.</h1>
+            <% } %>
         </div>
     </main>
     <%- include('layouts/footer') %>

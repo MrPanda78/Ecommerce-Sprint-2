@@ -83,6 +83,12 @@ const cartController = {
         res.redirect("/cart");
     },
 
+    removeFromCart: (req, res) => {
+        const productId = Number(req.params.id);
+        req.session.cart = req.session.cart.filter(item => item.productId !== productId);
+        res.redirect("/cart");
+    },
+
     clearCart: (req, res) => {
         req.session.cart = [];
         res.redirect("/cart");

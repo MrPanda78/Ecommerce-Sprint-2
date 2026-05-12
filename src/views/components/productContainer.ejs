@@ -15,7 +15,7 @@
         <h2 class="title"><%= product.name %></h2>
 
         <div class="price">
-            <span class="amount"><%= product.price %></span>
+            <span class="amount"><%= new Intl.NumberFormat('es-CL').format(product.price) %></span>
             <span class="points">PUNTOS</span>
         </div>
 
