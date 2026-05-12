@@ -46,7 +46,7 @@
             <div class="interests">
                 <% mostRequested.forEach(product => { %>
                     <%- include('components/productCard', { 
-                        id: 1,
+                        id: product.id,
                         name: product.name,
                         image: product.image,
                         points: product.points,
