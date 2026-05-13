@@ -3,12 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404</title>
+    <title>Error 404 - Ecommerce</title>
+
+    <link rel="stylesheet" href="/css/components/userDropdown.css">
+    <link rel="stylesheet" href="/css/layouts/header.css">
+    <link rel="stylesheet" href="/css/components/searchBar.css">
+    <link rel="stylesheet" href="/css/components/cartAndProfile.css">
+    <link rel="stylesheet" href="/css/views/error404.css">
+    <link rel="stylesheet" href="/css/layouts/footer.css">
 </head>
 <body>
-    <h1>Error 404</h1>
-    <p>Pagina inexistente.</p>
+    <%- include('components/userDropdown') %>
+    <%- include('layouts/header', { loggedIn: 1 }) %>
+    <main>
+        <h1>Error 404 - Página no encontrada.</h1>
+        <a href="/" class="back-to-home">Volver al inicio</a>
+    </main>
+    <%- include('layouts/footer') %>
 
-    <a href="/">Volver al inicio</a>
+    <script src="/js/dropdown.js"></script>
 </body>
 </html>

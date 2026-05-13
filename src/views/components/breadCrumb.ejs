@@ -15,7 +15,7 @@
         </svg>
         <h3>Volver<% if (page === 'product' || page === 'checkout') {%> al listado<% } %></h3>
     </a>
-    <% if (page === 'product') { %>
+    <% if (page === 'product' || page === 'categories') { %>
     <svg width="20px" height="20px" viewBox="-4.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -29,6 +29,14 @@
             </g>
         </g>
     </svg>
-    <a class="category" href="#">Alimentos</a>
-    <% } %>
+        <% if (page === 'categories') { %>
+            <% if (categorySelected === "all") { %>
+                <a class="category" href="/categories">Todos los productos</a>
+            <% } else { %>
+                <a class="category" href="/categories/<%= categorySelected %>"><%= translateCategory[categorySelected] %></a>
+            <% } %>
+        <% } else if (page === 'product') { %>
+            <a class="category" href="/categories/<%= product.category %>"><%= translateCategory[product.category] %></a>
+        <% }
+    } %>
 </div>

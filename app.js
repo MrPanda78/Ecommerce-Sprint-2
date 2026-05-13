@@ -4,6 +4,7 @@ const session = require('express-session'); // Esto permite usar: req.session
 
 const indexRoutes = require('./src/routes/indexRoute');
 const cartRoutes = require('./src/routes/cartRoute');
+const categoriesRoutes = require('./src/routes/categoriesRoute');
 const checkoutRoutes = require('./src/routes/checkoutRoute');
 const loginRoutes = require('./src/routes/loginRoute');
 const productRoutes = require('./src/routes/productRoute');
@@ -23,11 +24,11 @@ app.use(session({ // Esto crea una sesión para cada navegador.
     secret: '123456789', // Clave interna usada por Express.
     resave: false, // Evita guardar la sesión si no cambió.
     saveUninitialized: false // No crea sesiones vacías innecesarias.
-
 }));
 
 app.use('/', indexRoutes);
 app.use('/cart', cartRoutes);
+app.use('/categories', categoriesRoutes);
 app.use('/checkout', checkoutRoutes);
 app.use('/login', loginRoutes);
 app.use('/products', productRoutes);
