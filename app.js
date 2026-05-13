@@ -30,7 +30,7 @@ app.use('/', indexRoutes);
 app.use('/cart', cartRoutes);
 app.use('/checkout', checkoutRoutes);
 app.use('/login', loginRoutes);
-app.use('/product', productRoutes);
+app.use('/products', productRoutes);
 app.use('/register', registerRoutes);
 
 app.use(indexController.error404);
