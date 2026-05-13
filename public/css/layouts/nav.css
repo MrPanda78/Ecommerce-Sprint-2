@@ -21,6 +21,7 @@ nav {
     cursor: pointer;
     padding: 0.5rem;
     transition: color 0.5s ease;
+    text-decoration: none;
 }
 
 .nav-item:hover, .nav-item:hover span {

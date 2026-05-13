@@ -21,11 +21,11 @@
     <%- include('layouts/header', { loggedIn: loggedIn }) %>
     <main>
         <div class="container1">
-            <%- include('components/breadCrumb', { page: 'product' }) %>
+            <%- include('components/breadCrumb', { page: 'product', product }) %>
             <%- include('components/productContainer', { product }) %>
         </div>
         <div class="container1-mobile">
-            <%- include('components/breadCrumb', { page: 'product' }) %>
+            <%- include('components/breadCrumb', { page: 'product', translateCategory }) %>
             <form class="product-container-mobile" action="/cart/add/<%= product.id %>" method="POST">
                 <h2 class="title"><%= product.name %></h2>
                 <div class="main-image-mobile">
@@ -70,6 +70,6 @@
     </main>
     <%- include('layouts/footer') %>
 
-    <script src="/js/product.js"></script>
+    <script src="/js/dropdown.js"></script>
 </body>
 </html>

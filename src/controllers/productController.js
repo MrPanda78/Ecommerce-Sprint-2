@@ -1,5 +1,16 @@
 const products = require("../data/products.json");
 
+const translateCategory = {
+    "food": "Alimentos",
+    "automotive": "Automotor",
+    "beverages": "Bebidas",
+    "electronic": "Electrónica",
+    "home": "Hogar",
+    "clothing": "Indumentaria",
+    "games": "Juegos",
+    "other": "Otros"
+}
+
 const productController = {
     product: (req, res) => {
         const id = Number(req.params.id);
@@ -35,7 +46,7 @@ const productController = {
             points: product.points.toLocaleString("es-AR"), // toLocaleString() sirve para formatear números según una configuración regional
             image: product.image ? `/images/products/${product.category}/${product.image}` : "/images/fondo_blanco_negro.webp"
         }));
-        res.render('product', { loggedIn: 1, interests, product });
+        res.render('product', { loggedIn: 1, interests, product, translateCategory });
     }
 };
 
