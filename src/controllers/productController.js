@@ -2,8 +2,15 @@ const products = require("../data/products.json");
 
 const productController = {
     product: (req, res) => {
-        const product = products[0];
+        const id = Number(req.params.id);
+        const product = products.find(p => p.id === id);
 
+        // Validar si existe
+        if (!product) 
+        {
+            return res.status(404).render("error404");
+        }
+        
         // Filtra productos de la misma categoría para "interests"
         const shuffledProducts = products.filter(p =>
             p.category === product.category &&
