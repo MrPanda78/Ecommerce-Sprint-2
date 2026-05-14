@@ -19,10 +19,13 @@ const cartController = {
         // Total general
         const total = cartProducts.reduce((acc, product) => acc + product.subtotal, 0);
 
+        const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
+
         res.render("cart", {
             cartProducts,
             total,
-            loggedIn: 1
+            loggedIn: 1,
+            totalItems
         });
     },
 

@@ -1,7 +1,7 @@
 <div class="cart-and-profile">
     <a href="/cart" class="cart">
-        <% if (!empty) { %>
-        <span class="badge">2</span>
+        <% if (totalItems> 0) { %>
+        <span class="badge"><%= totalItems %></span>
         <% } %>
         <svg class="icon-cart" viewBox="0 0 28 28">
             <path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44c-.16.28-.25.61-.25.97 

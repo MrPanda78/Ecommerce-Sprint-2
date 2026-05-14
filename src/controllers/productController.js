@@ -46,7 +46,12 @@ const productController = {
             points: product.points.toLocaleString("es-AR"), // toLocaleString() sirve para formatear números según una configuración regional
             image: product.image ? `/images/products/${product.category}/${product.image}` : "/images/fondo_blanco_negro.webp"
         }));
-        res.render('product', { loggedIn: 1, interests, product, translateCategory });
+
+        const cart = req.session.cart || [];
+        
+        const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
+
+        res.render('product', { loggedIn: 1, interests, product, translateCategory, totalItems });
     }
 };
 
