@@ -1,10 +1,15 @@
 const checkoutController = {
-    checkout: (req, res) => {
-        const cart = req.session.cart || [];
+    checkout: (req, res, next) => {
+        try{
+            const cart = req.session.cart || [];
         
-        const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
-        res.render('checkout', { loggedIn: 1, totalItems });
+            res.render('checkout', { loggedIn: 1, totalItems });
+        }
+        catch(error){
+            next(error);
+        }
     }
 };
 

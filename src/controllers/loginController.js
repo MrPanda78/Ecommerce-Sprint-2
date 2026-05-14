@@ -1,6 +1,11 @@
 const loginController = {
-    login: (req, res) => {
-        res.render('login', { loggedIn: 0 });
+    login: (req, res, next) => {
+        try{
+            res.render('login', { loggedIn: 0 });
+        }
+        catch(error){
+            next(error);
+        }
     }
 };
 

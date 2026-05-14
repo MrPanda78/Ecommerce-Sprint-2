@@ -1,32 +1,38 @@
 const products = require("../data/products.json")
 
 const cartController = {
-    cart: (req, res) => {
-        const cart = req.session.cart || [];
+    cart: (req, res, next) => {
+        try
+        {
+            const cart = req.session.cart || [];
 
-        // Combinar sesión + productos reales
-        const cartProducts = cart.map(cartItem => {
+            // Combinar sesión + productos reales
+            const cartProducts = cart.map(cartItem => {
 
-            const realProduct = products.find(product => product.id === cartItem.productId);
+                const realProduct = products.find(product => product.id === cartItem.productId);
 
-            return {
-                ...realProduct,
-                quantity: cartItem.quantity,
-                subtotal: realProduct.points * cartItem.quantity
-            };
-        });
+                return {
+                    ...realProduct,
+                    quantity: cartItem.quantity,
+                    subtotal: realProduct.points * cartItem.quantity
+                };
+            });
 
-        // Total general
-        const total = cartProducts.reduce((acc, product) => acc + product.subtotal, 0);
+            // Total general
+            const total = cartProducts.reduce((acc, product) => acc + product.subtotal, 0);
 
-        const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
-        res.render("cart", {
-            cartProducts,
-            total,
-            loggedIn: 1,
-            totalItems
-        });
+            res.render("cart", {
+                cartProducts,
+                total,
+                loggedIn: 1,
+                totalItems
+            });
+        }
+        catch(error){
+            next(error);
+        }
     },
 
     addToCart: (req, res) => {
