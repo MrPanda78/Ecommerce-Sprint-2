@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404 - Ecommerce</title>
+    <title>Error 500 - Ecommerce</title>
 
     <link rel="stylesheet" href="/css/components/userDropdown.css">
     <link rel="stylesheet" href="/css/layouts/header.css">
@@ -14,9 +14,9 @@
 </head>
 <body>
     <%- include('components/userDropdown') %>
-    <%- include('layouts/header', { loggedIn: 1 }) %>
+    <%- include('layouts/header', { loggedIn: 1, totalItems: 0 }) %>
     <main>
-        <h1>Error 404 - Página no encontrada.</h1>
+        <h1>Error 500 - Error interno en el servidor.</h1>
         <a href="/" class="back-to-home">Volver al inicio</a>
     </main>
     <%- include('layouts/footer') %>

@@ -36,6 +36,8 @@ app.use('/register', registerRoutes);
 
 app.use(indexController.error404);
 
+app.use(indexController.error500);
+
 app.listen(3000, () => {
     console.log('Servidor corriendo en http://localhost:3000');
 });

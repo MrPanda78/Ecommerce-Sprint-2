@@ -12,35 +12,45 @@ const translateCategory = {
 }
 
 const categoriesController = {
-    home: (req, res) => {
-        const cart = req.session.cart || [];
+    home: (req, res, next) => {
+        try{
+            const cart = req.session.cart || [];
 
-        const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
-        res.render("categories", {
-            products,
-            categorySelected: "all",
-            translateCategory,
-            loggedIn: 1,
-            totalItems
-        });
+            res.render("categories", {
+                products,
+                categorySelected: "all",
+                translateCategory,
+                loggedIn: 1,
+                totalItems
+            });
+        }
+        catch(error){
+            next(error);
+        }
     },
 
-    category: (req, res) => {
-        const category = req.params.category;
-        const categoryProducts = products.filter(product => product.category === category);
+    category: (req, res, next) => {
+        try{
+            const category = req.params.category;
+            const categoryProducts = products.filter(product => product.category === category);
 
-        const cart = req.session.cart || [];
-        
-        const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
+            const cart = req.session.cart || [];
+            
+            const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
-        res.render("categories", {
-            products: categoryProducts,
-            categorySelected: category,
-            translateCategory,
-            loggedIn: 1,
-            totalItems
-        });
+            res.render("categories", {
+                products: categoryProducts,
+                categorySelected: category,
+                translateCategory,
+                loggedIn: 1,
+                totalItems
+            });
+        }
+        catch(error){
+            next(error);
+        }
     }
 }
 
