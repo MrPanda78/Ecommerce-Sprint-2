@@ -1,21 +1,10 @@
-const products = require("../data/products.json")
-
-const translateCategory = {
-    "food": "Alimentos",
-    "automotive": "Automotor",
-    "beverages": "Bebidas",
-    "electronic": "Electrónica",
-    "home": "Hogar",
-    "clothing": "Indumentaria",
-    "games": "Juegos",
-    "other": "Otros"
-}
+const productsService = require("../services/productsService");
+const translateCategory = require("../utils/translateCategory");
 
 const categoriesController = {
     home: (req, res, next) => {
-        try{
+        try {
             const cart = req.session.cart || [];
-
             const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
             res.render("categories", {
@@ -43,12 +32,10 @@ const categoriesController = {
     },
 
     category: (req, res, next) => {
-        try{
+        try {
             const category = req.params.category;
-            const categoryProducts = products.filter(product => product.category === category);
-
+            const categoryProducts = productsService.getProductsByCategory(category);
             const cart = req.session.cart || [];
-            
             const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
             res.render("categories", {
