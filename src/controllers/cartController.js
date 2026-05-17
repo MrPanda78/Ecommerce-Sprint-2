@@ -1,27 +1,11 @@
-const products = require("../data/products.json")
+const cartService = require("../services/cartService");
 
 const cartController = {
     cart: (req, res, next) => {
-        try
-        {
-            const cart = req.session.cart || [];
-
-            // Combinar sesión + productos reales
-            const cartProducts = cart.map(cartItem => {
-
-                const realProduct = products.find(product => product.id === cartItem.productId);
-
-                return {
-                    ...realProduct,
-                    quantity: cartItem.quantity,
-                    subtotal: realProduct.points * cartItem.quantity
-                };
-            });
-
-            // Total general
-            const total = cartProducts.reduce((acc, product) => acc + product.subtotal, 0);
-
-            const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
+        try {
+            const cartProducts = cartService.getDetailedCart(req.session);
+            const total = cartService.calculateTotal(req.session);
+            const totalItems = cartService.getTotalItems(req.session);
 
             res.render("cart", {
                 title: 'Cart - Ecommerce',
@@ -47,70 +31,27 @@ const cartController = {
     },
 
     addToCart: (req, res) => {
-        const productId = Number(req.params.id);
-
-        // Crear carrito si no existe
-        if (!req.session.cart)
-        {
-            req.session.cart = [];
-        }
-
-        // Buscar producto existente
-        const existingProduct = req.session.cart.find(item => item.productId === productId);
-
-        // Verifica existencia
-        if (existingProduct)
-        {
-            existingProduct.quantity += 1;
-        } 
-        else //Crea producto
-        {
-            req.session.cart.push({ // Agrega al array
-                productId,
-                quantity: 1
-            });
-        }
+        cartService.addProduct(req.session, Number(req.params.id));
         res.redirect("/cart");
     },
 
     incrementQuantity: (req, res) => {
-        const productId = Number(req.params.id);
-
-        const product = req.session.cart.find(item => item.productId === productId);
-
-        if (product)
-        {
-            product.quantity += 1;
-        }
+        cartService.incrementQuantity(req.session, Number(req.params.id));
         res.redirect("/cart");
     },
 
     decrementQuantity: (req, res) => {
-        const productId = Number(req.params.id);
-
-        const product = req.session.cart.find(item => item.productId === productId);
-
-        if (product)
-        {
-            product.quantity -= 1;
-
-            // Eliminar si llega a 0
-            if (product.quantity <= 0)
-            {
-                req.session.cart = req.session.cart.filter(item => item.productId !== productId);
-            }
-        }
+        cartService.decrementQuantity(req.session, Number(req.params.id));
         res.redirect("/cart");
     },
 
     removeFromCart: (req, res) => {
-        const productId = Number(req.params.id);
-        req.session.cart = req.session.cart.filter(item => item.productId !== productId);
+        cartService.removeProduct(req.session, Number(req.params.id));
         res.redirect("/cart");
     },
 
     clearCart: (req, res) => {
-        req.session.cart = [];
+        cartService.clearCart(req.session);
         res.redirect("/cart");
     }
 };
