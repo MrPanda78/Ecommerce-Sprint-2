@@ -1,7 +1,11 @@
 const loginController = {
     login: (req, res, next) => {
         try{
-            res.render('login', { loggedIn: 0 });
+            res.render('login', {
+                loggedIn: 0,
+                title: 'Login - Ecommerce',
+                layout: false
+            });
         }
         catch(error){
             next(error);

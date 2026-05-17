@@ -1,31 +1,11 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Ecommerce</title>
 
-    <link rel="stylesheet" href="/css/components/userDropdown.css">
-    <link rel="stylesheet" href="/css/layouts/header.css">
-    <link rel="stylesheet" href="/css/components/searchBar.css">
-    <link rel="stylesheet" href="/css/components/cartAndProfile.css">
-    <link rel="stylesheet" href="/css/views/checkout.css">
-    <link rel="stylesheet" href="/css/layouts/footer.css">
-</head>
-<body>
-    <%- include('components/userDropdown') %>
-    <%- include('layouts/header', { loggedIn: loggedIn }) %>
-    <main>
-        <div class="container">
-            <h1>Checkout disponible en el próximo Sprint</h1>
-            <div class="buttons">
-                <a href="/cart">Volver al carrito</a>
-                <a href="/">Volver al inicio</a>
-            </div>
-        </div>
-    </main>
-    <%- include('layouts/footer') %>
-    
-    <script src="/js/dropdown.js"></script>
-</body>
-</html>
+<div class="container">
+    <h1>Checkout disponible en el próximo Sprint</h1>
+    <div class="buttons">
+        <a href="/cart">Volver al carrito</a>
+        <a href="/">Volver al inicio</a>
+    </div>
+</div>
+<%- include('layouts/footer') %>
+
+<script src="/js/dropdown.js"></script>

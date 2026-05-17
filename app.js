@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session'); // Esto permite usar: req.session
+const expressLayouts = require('express-ejs-layouts');
 
 const indexRoutes = require('./src/routes/indexRoute');
 const cartRoutes = require('./src/routes/cartRoute');
@@ -15,6 +16,9 @@ const app = express();
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src/views'));
+
+app.use(expressLayouts);
+app.set('layout', 'layouts/main');
 
 app.use(express.static('public'));
 

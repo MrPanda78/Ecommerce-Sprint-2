@@ -1,26 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 500 - Ecommerce</title>
+<h1>Error 500 - Error interno en el servidor.</h1>
+<a href="/" class="back-to-home">Volver al inicio</a>
 
-    <link rel="stylesheet" href="/css/components/userDropdown.css">
-    <link rel="stylesheet" href="/css/layouts/header.css">
-    <link rel="stylesheet" href="/css/components/searchBar.css">
-    <link rel="stylesheet" href="/css/components/cartAndProfile.css">
-    <link rel="stylesheet" href="/css/views/error404-500.css">
-    <link rel="stylesheet" href="/css/layouts/footer.css">
-</head>
-<body>
-    <%- include('components/userDropdown') %>
-    <%- include('layouts/header', { loggedIn: 1, totalItems: 0 }) %>
-    <main>
-        <h1>Error 500 - Error interno en el servidor.</h1>
-        <a href="/" class="back-to-home">Volver al inicio</a>
-    </main>
-    <%- include('layouts/footer') %>
-
-    <script src="/js/dropdown.js"></script>
-</body>
-</html>
+<script src="/js/dropdown.js"></script>
