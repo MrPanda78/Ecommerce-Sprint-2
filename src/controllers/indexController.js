@@ -46,7 +46,23 @@ const indexController = {
             
             const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
-            res.render('index', { loggedIn: 1, interests, mostRequested, totalItems });
+            res.render('index', {
+                title: 'Home - Ecommerce',
+                loggedIn: 1,
+                interests,
+                mostRequested,
+                totalItems,
+                styles: [
+                    "/css/components/userDropdown.css",
+                    "/css/layouts/header.css",
+                    "/css/components/searchBar.css",
+                    "/css/components/cartAndProfile.css",
+                    "/css/layouts/nav.css",
+                    "/css/views/index.css",
+                    "/css/components/productCard.css",
+                    "/css/layouts/footer.css"
+                ]
+            });
         }
         catch(error){
             next(error);
@@ -55,13 +71,37 @@ const indexController = {
 
     //Middleware404
     error404: (req, res) => {
-        res.status(404).render("error404");
+        res.status(404).render("error404", {
+            title: 'Error 404 - Ecommerce',
+            loggedIn: 1,
+            totalItems: 0,
+            styles: [
+                "/css/components/userDropdown.css",
+                "/css/layouts/header.css",
+                "/css/components/searchBar.css",
+                "/css/components/cartAndProfile.css",
+                "/css/views/error404-500.css",
+                "/css/layouts/footer.css"
+            ]
+        });
     },
 
     //Middleware 500 //función que se ejecuta entre la petición del usuario y la respuesta del servidor.
     error500:((err, req, res, next) => {
         console.error(err);
-        res.status(500).render("error500");
+        res.status(500).render("error500", {
+            title: 'Error 500 - Ecommerce',
+            loggedIn: 1,
+            totalItems: 0,
+            styles: [
+                "/css/components/userDropdown.css",
+                "/css/layouts/header.css",
+                "/css/components/searchBar.css",
+                "/css/components/cartAndProfile.css",
+                "/css/views/error404-500.css",
+                "/css/layouts/footer.css"
+            ]
+        });
     })
 };
 

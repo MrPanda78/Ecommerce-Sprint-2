@@ -23,7 +23,18 @@ const categoriesController = {
                 categorySelected: "all",
                 translateCategory,
                 loggedIn: 1,
-                totalItems
+                totalItems,
+                title: 'Categories - Ecommerce',
+                styles: [
+                    "/css/components/userDropdown.css",
+                    "/css/layouts/header.css",
+                    "/css/components/searchBar.css",
+                    "/css/components/cartAndProfile.css",
+                    "/css/views/categories.css",
+                    "/css/components/breadCrumb.css",
+                    "/css/components/productCard.css",
+                    "/css/layouts/footer.css"
+                ]
             });
         }
         catch(error){
@@ -45,7 +56,18 @@ const categoriesController = {
                 categorySelected: category,
                 translateCategory,
                 loggedIn: 1,
-                totalItems
+                totalItems,
+                title: 'Categories - Ecommerce',
+                styles: [
+                    "/css/components/userDropdown.css",
+                    "/css/layouts/header.css",
+                    "/css/components/searchBar.css",
+                    "/css/components/cartAndProfile.css",
+                    "/css/views/categories.css",
+                    "/css/components/breadCrumb.css",
+                    "/css/components/productCard.css",
+                    "/css/layouts/footer.css"
+                ]
             });
         }
         catch(error){

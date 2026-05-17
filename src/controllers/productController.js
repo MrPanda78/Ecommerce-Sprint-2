@@ -52,7 +52,26 @@ const productController = {
             
             const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
-            res.render('product', { loggedIn: 1, interests, product, translateCategory, totalItems });
+            res.render('product', {
+                loggedIn: 1,
+                interests,
+                product,
+                translateCategory,
+                totalItems,
+                title: 'Product ' + id + ' - Ecommerce',
+                styles: [
+                    "/css/components/userDropdown.css",
+                    "/css/layouts/header.css",
+                    "/css/components/searchBar.css",
+                    "/css/components/cartAndProfile.css",
+                    "/css/views/product.css",
+                    "/css/components/breadCrumb.css",
+                    "/css/components/productContainer.css",
+                    "/css/components/productCard.css",
+                    "/css/layouts/nav.css",
+                    "/css/layouts/footer.css"
+                ]
+            });
         }
         catch(error){
             next(error);
