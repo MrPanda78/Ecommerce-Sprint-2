@@ -47,13 +47,13 @@ const indexController = {
                 "/css/layouts/header.css",
                 "/css/components/searchBar.css",
                 "/css/components/cartAndProfile.css",
-                "/css/views/error404-500.css",
+                "/css/views/errors.css",
                 "/css/layouts/footer.css"
             ]
         });
     },
 
-    //Middleware 500 //función que se ejecuta entre la petición del usuario y la respuesta del servidor.
+    //Middleware 500.
     error500:((err, req, res, next) => {
         console.error(err);
         res.status(500).render("error500", {
@@ -65,7 +65,7 @@ const indexController = {
                 "/css/layouts/header.css",
                 "/css/components/searchBar.css",
                 "/css/components/cartAndProfile.css",
-                "/css/views/error404-500.css",
+                "/css/views/errors.css",
                 "/css/layouts/footer.css"
             ]
         });
