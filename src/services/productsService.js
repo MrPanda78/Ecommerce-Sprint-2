@@ -54,6 +54,21 @@ const productsService = {
                 ? `/images/products/${product.category}/${product.image}`
                 : "/images/fondo_blanco_negro.webp"
         }));
+    },
+
+    sortProducts(productsArray, sort) {
+        const sortedProducts = [...productsArray];
+
+        if(sort === "asc") {
+
+            sortedProducts.sort((a, b) => a.points - b.points);
+
+        }
+        else if(sort === "desc") {
+
+            sortedProducts.sort((a, b) => b.points - a.points);
+        }
+        return sortedProducts;
     }
 };
 

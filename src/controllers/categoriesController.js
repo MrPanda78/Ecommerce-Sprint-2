@@ -4,6 +4,11 @@ const translateCategory = require("../utils/translateCategory");
 const categoriesController = {
     home: (req, res, next) => {
         try {
+            const sort = req.query.sort;
+
+            let products = productsService.getAllProducts();
+            products = productsService.sortProducts(products, sort);
+
             const cart = req.session.cart || [];
             const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
@@ -13,6 +18,7 @@ const categoriesController = {
                 translateCategory,
                 loggedIn: 1,
                 totalItems,
+                sort,
                 title: 'Categories - Ecommerce',
                 styles: [
                     "/css/components/userDropdown.css",
@@ -34,7 +40,11 @@ const categoriesController = {
     category: (req, res, next) => {
         try {
             const category = req.params.category;
-            const categoryProducts = productsService.getProductsByCategory(category);
+            const sort = req.query.sort;
+
+            let categoryProducts = productsService.getProductsByCategory(category);
+            categoryProducts = productsService.sortProducts(categoryProducts, sort);
+
             const cart = req.session.cart || [];
             const totalItems = cart.reduce((acc, item) => acc + item.quantity,0);
 
@@ -44,6 +54,7 @@ const categoriesController = {
                 translateCategory,
                 loggedIn: 1,
                 totalItems,
+                sort,
                 title: 'Categories - Ecommerce',
                 styles: [
                     "/css/components/userDropdown.css",
