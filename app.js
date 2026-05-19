@@ -11,6 +11,7 @@ const loginRoutes = require('./src/routes/loginRoute');
 const productRoutes = require('./src/routes/productRoute');
 const registerRoutes = require('./src/routes/registerRoute');
 const indexController = require('./src/controllers/indexController');
+const searchRoutes = require('./src/routes/searchRoute');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/checkout', checkoutRoutes);
 app.use('/login', loginRoutes);
 app.use('/products', productRoutes);
 app.use('/register', registerRoutes);
+app.use('/search', searchRoutes);
 
 app.use(indexController.error404);
 
