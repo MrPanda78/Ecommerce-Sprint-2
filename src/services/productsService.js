@@ -69,6 +69,10 @@ const productsService = {
             sortedProducts.sort((a, b) => b.points - a.points);
         }
         return sortedProducts;
+    },
+
+    searchByName(productsArray, buscar){
+        return productsArray.filter(product => product.name.toLowerCase().includes(buscar.toLowerCase()));
     }
 };
 

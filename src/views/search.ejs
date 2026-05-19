@@ -76,11 +76,11 @@
     </div>
 </aside>
 <div class="products">
-    <%- include('components/breadCrumb', { page: 'categories', categorySelected, translateCategory }) %>
+    <%- include('components/breadCrumb', { page: 'search' }) %>
     <span>Mostrando un total de <%= products.length %> productos</span>
     <div class="list" <% if (products.length === 0) { %> style="display: flex; overflow: hidden;" <% } %>>
         <% if (products.length === 0) { %>
-            <h2>Lo sentimos... No se encontraron productos en esta categoría.</h2>
+            <h2>Lo sentimos... No se encontraron productos en la lista.</h2>
         <% } else { %>
             <% products.forEach(product => { %>
                 <%- include('components/productCard', { 
